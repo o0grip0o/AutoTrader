@@ -18,14 +18,22 @@ def get_data(ticker, start, end):
     data = yf.download(ticker, start, end)
     return data
 
-def get_model():
-    ...
+def get_model(input_shape):
+    model = tf.keras.models.Sequential([
+        tf.keras.layers.Dense(32, activation='relu', input_shape=input_shape),
+        tf.keras.layers.Dense(32, activation='relu'),
+        tf.keras.layers.Dense(1, activation='sigmoid')
+    ])
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return model
 
-def get_predictions():
-    ...
+def get_predictions(model, data):
+    predictions = model.predict(data)
+    return predictions
 
 def get_recommendations():
-    ...
+    recommendations = ['Buy', 'Sell', 'Hold']
+    return recommendations
 
 def get_portfolio():
     ...
