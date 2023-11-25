@@ -1,7 +1,22 @@
 import pandas as pds
+import numpy as np
+import tensorflow as tf
+import yfinance as yf
 
-def get_data():
-    ...
+###
+# Autotrader
+# TODO: Project will make automated trades based on a models predictions using Pandas and yfinance
+# 1. Get data
+# 2. Get model
+# 3. Get predictions
+# 4. Get recommendations
+# 5. Get portfolio
+# 6. Get trades
+# 7. Main
+###
+def get_data(ticker, start, end):
+    data = yf.download(ticker, start, end)
+    return data
 
 def get_model():
     ...
