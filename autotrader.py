@@ -34,11 +34,8 @@ def get_recommendations(predictions, portfolio):
 
 def get_portfolio():
     portfolio = {
-        'AAPL': 100,
-        'MSFT': 100,
-        'TSLA': 100,
-        'GOOG': 100,
-        'AMZN': 100
+        'LMC' : 10,
+        'AMZN': 30
     }
     return portfolio
 
