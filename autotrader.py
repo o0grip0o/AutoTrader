@@ -29,8 +29,8 @@ def get_predictions(model, data):
     predictions = model.predict(data)
     return predictions
 
-def get_recommendations(predictions):
-    return ['Buy' if prediction > 0.5 else 'Sell' for prediction in predictions]
+def get_recommendations(predictions, portfolio):
+    return {stock: ('Buy' if prediction > 0.5 else 'Sell') for stock, prediction in zip(portfolio, predictions)}
 
 def get_portfolio():
     portfolio = {
@@ -58,10 +58,10 @@ def main():
     model = get_model((data.shape[1],))
     # Get predictions
     predictions = get_predictions(model, data)
-    # Get recommendations
-    recommendations = get_recommendations(predictions)
     # Get portfolio
     portfolio = get_portfolio()
+    # Get recommendations
+    recommendations = get_recommendations(predictions, portfolio)
     # Get trades
     trades = get_trades(recommendations, portfolio)
     # Print trades
