@@ -1,5 +1,3 @@
-import pandas as pds
-import numpy as np
 import tensorflow as tf
 import yfinance as yf
 
