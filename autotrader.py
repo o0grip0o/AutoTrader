@@ -31,18 +31,43 @@ def get_predictions(model, data):
     predictions = model.predict(data)
     return predictions
 
-def get_recommendations():
-    recommendations = ['Buy', 'Sell', 'Hold']
-    return recommendations
+def get_recommendations(predictions):
+    return ['Buy' if prediction > 0.5 else 'Sell' for prediction in predictions]
 
 def get_portfolio():
-    ...
+    portfolio = {
+        'AAPL': 100,
+        'MSFT': 100,
+        'TSLA': 100,
+        'GOOG': 100,
+        'AMZN': 100
+    }
+    return portfolio
 
-def get_trades():
-    ...
+def get_trades(recommendations, portfolio):
+    trades = []
+    for stock, quantity in portfolio.items():
+        if recommendations[stock] == 'Buy':
+            trades.append((stock, 'Buy', quantity))
+        elif recommendations[stock] == 'Sell':
+            trades.append((stock, 'Sell', quantity))
+    return trades
 
 def main():
-    ...
+    # Get data
+    data = get_data('AAPL', '2016-01-01', '2021-01-01')
+    # Get model
+    model = get_model((data.shape[1],))
+    # Get predictions
+    predictions = get_predictions(model, data)
+    # Get recommendations
+    recommendations = get_recommendations(predictions)
+    # Get portfolio
+    portfolio = get_portfolio()
+    # Get trades
+    trades = get_trades(recommendations, portfolio)
+    # Print trades
+    print(trades)
 
 if __name__ == '__main__':
     main()
