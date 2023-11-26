@@ -50,7 +50,7 @@ def get_trades(recommendations, portfolio):
 
 def main():
     # Get data
-    data = get_data('AAPL', '2016-01-01', '2021-01-01')
+    data = get_data('AMZN', '2016-01-01', '2023-11-19')
     # Get model
     model = get_model((data.shape[1],))
     # Get predictions
