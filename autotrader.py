@@ -12,7 +12,7 @@ import yfinance as yf
 # 6. Get trades
 # 7. Main
 ###
-def get_data(ticker, start, end):
+def get_data(ticker: str, start: str, end: str) -> object:
     data = yf.download(ticker, start, end)
     return data
 
